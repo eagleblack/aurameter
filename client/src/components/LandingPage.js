@@ -9,18 +9,7 @@ const LandingPage = () => {
   const phoneRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const hero = heroRef.current;
-      if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+ 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 600);
     window.addEventListener('resize', handleResize);
@@ -65,33 +54,34 @@ const LandingPage = () => {
           <div className="gradient-orb orb-3"></div>
         </div>
         
-        <div className="container">
-          <motion.div 
+        <div className="container" style={{marginTop:100}}>
+          <div 
             className="hero-content"
             initial="initial"
             animate="animate"
-            variants={staggerContainer}
+           
           >
-            <motion.h1 
+            <h1 
               className="hero-title"
               variants={fadeInUp}
             >
               <span className="gradient-text">Aurameter</span>
               <br />
               <span className="subtitle-text">AI-Powered Social Energy</span>
-            </motion.h1>
+            </h1>
             
-            <motion.p 
+            <p 
               className="hero-description"
               variants={fadeInUp}
             >
               Discover your digital aura, connect with like-minded souls, and grow your energy through mindful interactions. 
               The future of social media is here.
-            </motion.p>
+            </p>
             
-            <motion.div 
+            <div 
               className="hero-cta"
               variants={fadeInUp}
+              style={{alignSelf:'center'}}
             >
               <Link to="/check-aura" className="cta-button primary">
                 <span>Check Your Aura</span>
@@ -100,7 +90,7 @@ const LandingPage = () => {
               <Link to="/about" className="cta-button secondary">
                 Learn More
               </Link>
-            </motion.div>
+            </div>
             <div className="store-buttons">
               <a href="https://play.google.com/store/apps/details?id=com.aurameter&hl=en-US&ah=hfOFMAA1mXM1nhLz8BMXeNm1GwQ&pli=1" target="_blank" rel="noopener noreferrer" className="store-btn playstore-btn">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="store-badge" />
@@ -109,7 +99,7 @@ const LandingPage = () => {
                 <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" className="store-badge" />
               </a>
             </div>
-          </motion.div>
+          </div>
 
           <motion.div 
             className="hero-visual"
@@ -135,7 +125,6 @@ const LandingPage = () => {
             >
               <div className="phone-frame">
                 <div className="phone-screen">
-                  <div className="notification-badge">1</div>
                   <div className="app-interface">
                     <div className="app-header">
                       <div className="aura-icon">💜</div>
@@ -148,7 +137,7 @@ const LandingPage = () => {
                       </div>
                       <div className="aura-label">Your Aura Score</div>
                     </div>
-                    {!isMobile && (
+                  
                       <div className="app-stats">
                         <div className="stat-cards">
                           <div className="stat-card">
@@ -161,32 +150,19 @@ const LandingPage = () => {
                           </div>
                         </div>
                       </div>
-                    )}
+                    
                   </div>
                 </div>
                 <div className="phone-reflection"></div>
               </div>
             </div>
           </motion.div>
-          {isMobile && (
-            <div className="app-stats">
-              <div className="stat-cards">
-                <div className="stat-card">
-                  <span className="stat-number">23</span>
-                  <span className="stat-label">Connections</span>
-                </div>
-                <div className="stat-card">
-                  <span className="stat-number">156</span>
-                  <span className="stat-label">Aura Points</span>
-                </div>
-              </div>
-            </div>
-          )}
+
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
+      <section className="features-section" style={{padding:'10px 20px'}}>
         <div className="container">
           <motion.div 
             className="section-header"
