@@ -4,7 +4,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .landing-page {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
   min-height: 100vh;
@@ -16,66 +15,31 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding:  0rem 4rem;
 }
 
 /* Hero Section */
 .hero-section {
-  position: relative;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensure it takes full viewport height */
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
+}
+
+
+
+.hero-backgrounds {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
   overflow: hidden;
 }
-
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+.container {
+  position: relative;
+  z-index: 2;
 }
 
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.6;
-  animation: float 6s ease-in-out infinite;
-}
 
-.orb-1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #8b5cf6 0%, #a855f7 50%, transparent 100%);
-  top: 10%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.orb-2 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, #06b6d4 0%, #0891b2 50%, transparent 100%);
-  top: 60%;
-  right: 15%;
-  animation-delay: 2s;
-}
-
-.orb-3 {
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, #f59e0b 0%, #d97706 50%, transparent 100%);
-  bottom: 20%;
-  left: 20%;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
-}
 
 .hero-section .container {
   position: relative;
@@ -93,7 +57,7 @@
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2rem, 8vw, 5rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
@@ -108,7 +72,7 @@
 }
 
 .subtitle-text {
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(1rem, 4vw, 2rem);
   font-weight: 300;
   color: #94a3b8;
   display: block;
@@ -127,6 +91,9 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .cta-button {
@@ -250,27 +217,25 @@
   transform-style: preserve-3d;
   animation: phoneFloat 4s ease-in-out infinite;
   z-index: 3;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 8px 0 rgba(139,92,246,0.08);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 9 / 18;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 8px rgba(139,92,246,0.08);
   transition: box-shadow 0.3s;
 }
 
-.phone-mockup:hover {
-  box-shadow: 0 16px 48px 0 rgba(0,0,0,0.32), 0 2px 16px 0 rgba(139,92,246,0.12);
-}
-
 .phone-frame {
-  width: 280px;
-  height: 560px;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(145deg, #23272f 0%, #3a3f4b 60%, #bfc9d1 100%);
   border-radius: 48px;
   padding: 10px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.18), 0 0.5px 2px rgba(255,255,255,0.08) inset;
   position: relative;
   background-clip: padding-box, border-box;
-  overflow: visible;
-  transition: border-radius 0.3s;
+  overflow: hidden;
 }
-
 /* Remove .phone-frame::before and .phone-frame::after for a clean border */
 
 .phone-screen {
@@ -437,7 +402,7 @@
 }
 
 .section-title {
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 700;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #8b5cf6, #06b6d4);
@@ -447,7 +412,7 @@
 }
 
 .section-subtitle {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #94a3b8;
   max-width: 600px;
   margin: 0 auto;
@@ -701,7 +666,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 300px) {
   .landing-page {
     padding: 0 0 2rem 0;
   }
@@ -798,3 +763,64 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #a855f7, #0891b2);
 } 
+
+.phone-mockup {
+  position: relative;
+  transform-style: preserve-3d; /* Retained for 3D animation if needed */
+  animation: phoneFloat 4s ease-in-out infinite; /* Ensure phoneFloat is defined elsewhere */
+  z-index: 3;
+  margin: 0 auto;
+  width: 90%; /* Use percentage for better responsiveness */
+  max-width: 320px; /* Slightly increased max-width for flexibility */
+  min-width: 240px; /* Prevent mockup from shrinking too much */
+  aspect-ratio: 9 / 18;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 1.5px 8px rgba(139, 92, 246, 0.08);
+  transition: box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Ensure text inside scales with screen size */
+.phone-mockup * {
+  font-size: clamp(14px, 4vw, 16px); /* Responsive font size */
+}
+
+/* Phone frame styling */
+.phone-frame {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #23272f 0%, #3a3f4b 60%, #bfc9d1 100%);
+  border-radius: clamp(24px, 10vw, 36px); /* Responsive border-radius */
+  padding: clamp(8px, 2vw, 12px); /* Responsive padding */
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18), 0 0.5px 2px rgba(255, 255, 255, 0.08) inset;
+  position: relative;
+  overflow: hidden; /* Prevent content overflow */
+  box-sizing: border-box; /* Ensure padding doesn’t increase size */
+}
+
+/* Media query for 270–500px screens */
+@media screen and (min-width: 270px) and (max-width: 500px) {
+  .phone-mockup {
+    width: 85%; /* Slightly smaller width for better fit */
+    max-width: 300px; /* Adjusted for intermediate screens */
+    transform: scale(0.9); /* Slightly scale down to avoid overflow */
+    animation: none; /* Disable animation to prevent jittering */
+  }
+
+  .phone-frame {
+    border-radius: 30px; /* Slightly smaller radius for better proportion */
+    padding: 8px; /* Consistent padding for smaller screens */
+  }
+}
+
+/* Media query for very SMALL screens (<270px) */
+@media screen and (max-width: 269px) {
+  .phone-mockup {
+    width: 95%;
+    max-width: 240px;
+    transform: scale(0.85); /* Scale down further for tiny screens */
+  }
+
+  .phone-frame {
+    border-radius: 24px;
+    padding: 6px;
+  }
+}
